@@ -5,15 +5,19 @@ that can be deployed on K3S based devices w/ Krustlet.
 
 ## Walkthrough
 
-This walkthrough will take approximately seven minutes to go from nothing to a complete Rust WebAssembly development environment with a K3S cluster w/ Krustlet preconfigured. The record speed run is 6m22s - please send a pull request if you were able to do it faster (or, even better, can make it faster with optimizations to our script). :)
+This walkthrough will take you, over the course of 5 minutes, from nothing to a complete Rust WebAssembly development environment including a K3S cluster w/ Krustlet preconfigured for near loop development.
+
+Let's go!
+
+1. Launch a codespace on this repo by pressing the Code button above and then "New codespace."
 
 1. Launch a codespace on this repo by pressing the Code button and then "New codespace."
 
-2. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it to the local K3s cluster.
+1. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it to the local K3s cluster.
 
-3. Once the codespace container has been build and launched, the codespace IDE will launch. Behind the scenes, we are launching K3S and then connecting a Krustlet node to it. Switch to the bash tab on the right - the "GitHub Codespaces: Configuration" tab will remain open as it hosts Krustlet.
+1. Once the codespace container has been build and launched, the codespace IDE will launch. Behind the scenes, we are launching K3S and then connecting a Krustlet node to it. Switch to the bash tab on the right - the "GitHub Codespaces: Configuration" tab will remain open as it hosts Krustlet.
 
-4. Once the IDE is ready, you are ready to start your inner dev loop. Let's run the application in the shell to see what it does. Hit F1, then select 'Tasks: Run Task', and then select 'Run'. You should see something that looks like this:
+1. Once the IDE is ready, you are ready to start your inner dev loop. Let's run the application in the shell to see what it does. Hit F1, then select 'Tasks: Run Task', and then select 'Run'. You should see something that looks like this:
 
 ```bash
   Downloaded 6 crates (805.7 KB) in 0.28s
