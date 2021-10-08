@@ -11,8 +11,6 @@ Let's go!
 
 1. Launch a codespace on this repo by pressing the Code button above and then "New codespace."
 
-1. Launch a codespace on this repo by pressing the Code button and then "New codespace."
-
 1. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it to the local K3s cluster.
 
 1. Once the codespace container has been build and launched, the codespace IDE will launch. Behind the scenes, we are launching K3S and then connecting a Krustlet node to it. Switch to the bash tab on the right - the "GitHub Codespaces: Configuration" tab will remain open as it hosts Krustlet.
