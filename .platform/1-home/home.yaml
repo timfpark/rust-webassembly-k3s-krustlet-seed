@@ -1,0 +1,72 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: platform
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+  namespace: platform
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: /usr/share/nginx/html
+          name: dev-data
+      volumes:
+        - name: dev-data
+          hostPath:
+            path: /dev-data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: platform
+spec:
+  selector: 
+    app: nginx
+  type: ClusterIP  
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: home
+  namespace: platform
+spec:
+  routes:
+    - match: PathPrefix(`/.platform`)
+      kind: Rule
+      services:
+        - name: nginx
+          port: 80
+      middlewares:
+        - name: home-stripprefix
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: home-stripprefix
+  namespace: platform
+spec:
+  stripPrefix:
+    prefixes:
+      - "/.platform"
+    forceSlash: false

@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prometheus-service
+  namespace: platform
+spec:
+  selector: 
+    app: prometheus-server
+  type: ClusterIP  
+  ports:
+    - name: http
+      port: 9090
+      targetPort: 9090
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+  namespace: platform
+spec:
+  routes:
+    - match: PathPrefix(`/_prometheus`)
+      kind: Rule
+      services:
+        - name: prometheus-service
+          port: 9090

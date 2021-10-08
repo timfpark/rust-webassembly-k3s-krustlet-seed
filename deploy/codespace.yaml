@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: hello-world-wasi-rust
+    labels:
+        app: hello-world-wasi-rust
+spec:
+    replicas: 1
+    selector:
+        matchLabels:
+            app: hello-world-wasi-rust
+    strategy:
+        type: RollingUpdate
+    template:
+        metadata:
+            labels:
+                app: hello-world-wasi-rust
+        spec:
+            containers:
+                - name: hello-world-wasi-rust
+                  image: localhost:12345/hello-world-rust:${TAG}
+            tolerations:
+                - key: "kubernetes.io/arch"
+                  operator: "Equal"
+                  value: "wasm32-wasi"
+                  effect: "NoExecute"
+                - key: "node.kubernetes.io/network-unavailable"
+                  operator: "Exists"
+                  effect: "NoSchedule"
+                - key: "kubernetes.io/arch"
+                  operator: "Equal"
+                  value: "wasm32-wasi"
+                  effect: "NoSchedule"
