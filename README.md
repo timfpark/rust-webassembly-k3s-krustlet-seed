@@ -22,7 +22,7 @@ k3d-k3s-default-server-0   Ready    control-plane,master   75s   v1.21.3+k3s1
 krustlet                   Ready    <none>                 16s   1.0.0-alpha.1
 ```
 
-If you don't see krustlet in the list, get a cup of coffee quickly and try again. It usually takes about 15 seconds to start.
+If you don't see krustlet in the list, get a cup of coffee and try again. It usually takes about 15 seconds to start.
 
 5. Once Krustlet is running, you are ready to start your inner dev loop. Let's run the application in the shell to see what it does. Hit F1, then select 'Tasks: Run Task', and then select 'Run'. You should see something that looks like this:
 

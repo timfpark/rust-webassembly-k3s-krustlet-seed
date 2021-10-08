@@ -17,3 +17,6 @@ fi
 
 # prep WASI Rust target
 rustup target add wasm32-wasi
+
+SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+$SCRIPT_DIR/start-kubelet.sh
