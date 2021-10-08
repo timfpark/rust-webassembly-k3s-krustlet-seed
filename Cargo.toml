@@ -1,10 +1,13 @@
 [package]
 name = "hello-world-rust"
 version = "0.1.0"
-authors = ["Taylor Thomas <taylor.thomas@microsoft.com>"]
+authors = ["Tim Park"]
 edition = "2018"
 
 [dependencies]
 chrono = "0.4"
 
 [workspace]
+
+[profile.release]
+lto = true
