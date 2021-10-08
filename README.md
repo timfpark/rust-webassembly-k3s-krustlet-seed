@@ -11,9 +11,9 @@ Let's go!
 
 1. Launch a codespace on this repo by pressing the Code button above and then "New codespace."
 
-1. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it to the local K3s cluster.
+1. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it on the preprovisioned K3s cluster running locally with a Krustlet node.
 
-1. Once the codespace container has been build and launched, the codespace IDE will launch. Behind the scenes, we are launching K3S and then connecting a Krustlet node to it. Switch to the bash tab on the right - the "GitHub Codespaces: Configuration" tab will remain open as it hosts Krustlet.
+1. Once the codespace container has been build and launched, the codespace IDE will launch. Behind the scenes, we are launching K3S and then connecting a Krustlet node to it.
 
 1. Once the IDE is ready, you are ready to start your inner dev loop. Let's run the application in the shell to see what it does. Hit F1, then select 'Tasks: Run Task', and then select 'Run'. You should see something that looks like this:
 
@@ -37,7 +37,7 @@ hello world @ 17:00:28
 
 Hit Ctrl-C to exit and stop.
 
-5. So inner loop is easy, but we are here to do harder things, but first let's first confirm that the Krustlet node has started:
+5. So we have a Rust inner loop, which is great, but we are here to do harder things. Let's first confirm that the Krustlet node has started:
 
 ```bash
 @timfpark ➜ /workspaces/krustlet-seed (main) $ kubectl get nodes
@@ -46,7 +46,7 @@ k3d-k3s-default-server-0   Ready    control-plane,master   75s   v1.21.3+k3s1
 krustlet                   Ready    <none>                 16s   1.0.0-alpha.1
 ```
 
-If you don't see krustlet in the list, get a cup of coffee and try again.
+If you don't see krustlet in the list, get a cup of coffee and then try again.
 
 6.  With our Krustlet node up, let's deploy our current code in the cluster on a Krustlet node. Hit F1, select 'Tasks: Run Task', and then select "Run in local cluster". This will build with a `wasm32-wasi` target, push the WASM to our local OCI container registry, and then do a deployment of this to our locally running cluster.
 
@@ -90,4 +90,4 @@ hello world @ 17:33:59
 ...
 ```
 
-So we have, in the course of a couple of minutes (and with zero fiddly configuration), created a codespace, built an application, run it locally, and deployed it to a Krustlet node in our K3S cluster. We can make [changes to our application](src/main.rs), follow the last step again, and see those changes running in our local cluster. Finally, this local development cluster is nearly identical to our production deployment architecture, so we have a lot of confidence that our builds will work there.
+So we have, in the course of a couple of minutes (and with zero configuration), created a codespace, built an application, run it locally, and deployed it to a Krustlet node in our K3S cluster. We can make [changes to our application](src/main.rs), follow the last step again, and see those changes running in our local cluster. Finally, because this local development cluster is nearly identical to our production deployment architecture, we have a lot of confidence that our builds will work there too.
