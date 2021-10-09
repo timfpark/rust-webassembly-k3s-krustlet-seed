@@ -1,7 +1,7 @@
 # Rust WebAssembly Development Seed w/ K3S and Krustlet
 
-This application seed helps you get started quickly in minutes developing Rust based WebAssembly applications
-that can be deployed on K3S based devices w/ Krustlet.
+This application seed provides you with a solid starting point to develop Rust based WebAssembly applications
+with a local K3S based cluster with a Krustlet node.
 
 ## Walkthrough
 
@@ -9,7 +9,7 @@ This walkthrough will take you, over the course of 5 minutes, from nothing to a 
 
 Let's go!
 
-1. Launch a codespace on this repo by pressing the Code button above and then "New codespace."
+1. Launch a codespace on this repo by pressing the Code button above and then "New codespace."  Alternatively, clone this repo, and open the top level directory with VSCode.  VSCode should sense the presence of the DevContainer as part of this project and offer to let you "Reopen in Container."  Select this option and then you can follow the rest of these steps unchanged.
 
 1. This starts a codespace that contains all of the required dependencies you need to develop your first WebAssembly application and deploy it on the preprovisioned K3s cluster running locally with a Krustlet node.
 
@@ -37,7 +37,7 @@ hello world @ 17:00:28
 
 Hit Ctrl-C to exit and stop.
 
-5. So we have a Rust inner loop, which is great, but we are here to do harder things. Let's first confirm that the Krustlet node has started:
+5. So we have a Rust inner loop, which is great, but we are here to do harder things. Let's first confirm that the Krustlet node has started. Press "+" in the Terminal pane to open a bash shell and then confirm:
 
 ```bash
 @timfpark ➜ /workspaces/krustlet-seed (main) $ kubectl get nodes
